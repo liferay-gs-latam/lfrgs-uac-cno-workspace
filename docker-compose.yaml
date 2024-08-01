@@ -14,7 +14,7 @@ services:
       - "3306:3306"
 
   liferay:
-    image: liferay/dxp:7.4.13-u102
+    image: liferay/dxp:2024.q2.6
     environment:
       - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
@@ -24,6 +24,10 @@ services:
       - LIFERAY_MODULE_PERIOD_FRAMEWORK_PERIOD_PROPERTIES_PERIOD_OSGI_PERIOD_CONSOLE=0.0.0.0:11311
       - LIFERAY_RETRY_PERIOD_JDBC_PERIOD_ON_PERIOD_STARTUP_PERIOD_DELAY=20
       - LIFERAY_RETRY_PERIOD_JDBC_PERIOD_ON_PERIOD_STARTUP_PERIOD_MAX_PERIOD_RETRIES=5
+      - LIFERAY_UPGRADE_PERIOD_DATABASE_PERIOD_AUTO_PERIOD_RUN=true
+      - LIFERAY_UPGRADE_PERIOD_REPORT_PERIOD_ENABLED=true
+      # - LIFERAY_UPGRADE_PERIOD_LOG_PERIOD_CONTEXT_PERIOD_ENABLED=true
+      - LIFERAY_COMPANY_PERIOD_DEFAULT_PERIOD_WEB_PERIOD_ID=wnbizlink.com
     ports:
       - "8080:8080"
       - "11311:11311"
@@ -32,7 +36,7 @@ services:
       - ./docker-compose/liferay-files:/mnt/liferay/files
       - ./docker-compose/liferay-scripts:/mnt/liferay/scripts
       - ./bundles/deploy:/mnt/liferay/deploy
-      - ./bundles/osgi/modules:/opt/liferay/osgi/modules
+      # - ./bundles/osgi/modules:/opt/liferay/osgi/modules
       - ./bundles/osgi/configs:/opt/liferay/osgi/configs
       - ./bundles/osgi/war:/opt/liferay/osgi/war
       - ./bundles/logs:/opt/liferay/logs
