@@ -1,9 +1,11 @@
-version: '3.9'
-
 services:
 
   database:
-    image: mysql:8.0.33
+    image: mysql:5.7.44
+    ulimits:
+      nofile:
+        soft: 65536
+        hard: 65536
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=lportal
@@ -19,7 +21,7 @@ services:
       - LIFERAY_JPDA_ENABLED=true
       - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
-      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://database/lportal?characterEncoding=utf8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://database/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&permitMysqlScheme=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=root
       - LIFERAY_MODULE_PERIOD_FRAMEWORK_PERIOD_PROPERTIES_PERIOD_OSGI_PERIOD_CONSOLE=0.0.0.0:11311
@@ -34,11 +36,11 @@ services:
       - LIFERAY_SETUP_PERIOD_WIZARD_PERIOD_ENABLED=false
       - LIFERAY_COMPANY_PERIOD_LOGIN_PERIOD_PREPOPULATE_PERIOD_DOMAIN=false
       - LIFERAY_COMPANY_PERIOD_SECURITY_PERIOD_STRANGERS_PERIOD_URL=/registration
-      - LIFERAY_DEFAULT_PERIOD_LANDING_PERIOD_PAGE_PERIOD_PATH=/group/wnbizlink/home
+      # - LIFERAY_DEFAULT_PERIOD_LANDING_PERIOD_PAGE_PERIOD_PATH=/group/wnbizlink/home
       - LIFERAY_TERMS_PERIOD_OF_PERIOD_USE_PERIOD_REQUIRED=false
       - LIFERAY_LOCALES=en_US
       - LIFERAY_PASSWORDS_PERIOD_ENCRYPTION_PERIOD_ALGORITHM_PERIOD_LEGACY=SHA
-      - LIFERAY_AUTH_PERIOD_LOGIN_PERIOD_URL=/web/wnbizlink/login
+      # - LIFERAY_AUTH_PERIOD_LOGIN_PERIOD_URL=/web/wnbizlink/login
       - LIFERAY_TEMPLATE_PERIOD_ENGINE_PERIOD_SERVICE_PERIOD_LOCATOR_PERIOD_RESTRICT=false
       - LIFERAY_MODULE_PERIOD_FRAMEWORK_PERIOD_WEB_PERIOD_GENERATOR_PERIOD_GENERATED_PERIOD_WABS_PERIOD_STORE=true
     ports:
