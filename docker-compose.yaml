@@ -9,7 +9,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=lportal
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --character-set-client-handshake=FALSE --lower-case-table-names=0
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --character-set-client-handshake=FALSE --lower-case-table-names=0
     volumes:
        - ./docker-compose/database-dump/:/docker-entrypoint-initdb.d
     ports:
@@ -21,7 +21,7 @@ services:
       - LIFERAY_JPDA_ENABLED=true
       - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
-      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://database/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&permitMysqlScheme=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
+      - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://database/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&rewriteBatchedStatements=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD=root
       - LIFERAY_MODULE_PERIOD_FRAMEWORK_PERIOD_PROPERTIES_PERIOD_OSGI_PERIOD_CONSOLE=0.0.0.0:11311
