@@ -16,7 +16,7 @@ services:
       - "3306:3306"
 
   liferay:
-    image: liferay/dxp:2024.q2.6
+    image: liferay/dxp:2024.q1.1
     environment:
       - LIFERAY_JPDA_ENABLED=true
       - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g
