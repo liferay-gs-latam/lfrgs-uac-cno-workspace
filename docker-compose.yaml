@@ -1,7 +1,7 @@
 services:
 
   database:
-    image: mysql:5.7.44
+    image: mysql:8.0.31
     ulimits:
       nofile:
         soft: 65536
@@ -9,7 +9,7 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=lportal
-    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci --character-set-client-handshake=FALSE --lower-case-table-names=0
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_0900_ai_ci --character-set-client-handshake=FALSE --lower-case-table-names=0
     volumes:
        - ./docker-compose/database-dump/:/docker-entrypoint-initdb.d
     ports:
