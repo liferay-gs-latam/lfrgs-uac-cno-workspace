@@ -19,7 +19,7 @@ services:
     image: liferay/dxp:2024.q1.1
     environment:
       - LIFERAY_JPDA_ENABLED=true
-      - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g
+      - LIFERAY_JVM_OPTS=-Xms3g -Xmx4g -Dbizlink.environment=sit
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_DRIVER_UPPERCASEC_LASS_UPPERCASEN_AME=com.mysql.cj.jdbc.Driver
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL=jdbc:mysql://database/lportal?characterEncoding=UTF-8&dontTrackOpenResources=true&holdResultsOpenOverStatementClose=true&rewriteBatchedStatements=true&serverTimezone=GMT&useFastDateParsing=false&useUnicode=true
       - LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME=root
